@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>SenoTech LLC — We build apps & games</title>
+<meta name="description" content="SenoTech LLC is a UAE-based studio designing, building, and publishing original apps and games for the App Store and Google Play." />
+<meta name="theme-color" content="#0B0A1F" />
+
+<!-- Open Graph -->
+<meta property="og:title" content="SenoTech LLC — We build apps & games" />
+<meta property="og:description" content="A UAE-based studio creating and publishing original apps and games for iOS and Android." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://senotechapps.com" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Manrope:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+
+<style>
+  :root{
+    --night:#0B0A1F;
+    --night-2:#13102B;
+    --ink:#F5F3FF;
+    --muted:#A8A2CC;
+    --coral:#FF7A59;
+    --violet:#B14AED;
+    --cyan:#36E2C4;
+    --glass:rgba(255,255,255,0.055);
+    --glass-2:rgba(255,255,255,0.09);
+    --line:rgba(255,255,255,0.10);
+    --line-soft:rgba(255,255,255,0.06);
+    --maxw:1140px;
+    --ease:cubic-bezier(.22,.61,.36,1);
+  }
+
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+
+  body{
+    background:var(--night);
+    color:var(--ink);
+    font-family:"Manrope",system-ui,sans-serif;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+    position:relative;
+  }
+
+  /* ---------- Aurora background ---------- */
+  .aurora{
+    position:fixed;
+    inset:0;
+    z-index:0;
+    overflow:hidden;
+    pointer-events:none;
+  }
+  .blob{
+    position:absolute;
+    border-radius:50%;
+    filter:blur(90px);
+    opacity:.55;
+    will-change:transform;
+  }
+  .blob.b1{width:46vw;height:46vw;background:var(--violet);top:-12vw;left:-6vw;animation:drift1 22s var(--ease) infinite alternate}
+  .blob.b2{width:40vw;height:40vw;background:var(--coral);top:-4vw;right:-10vw;animation:drift2 26s var(--ease) infinite alternate}
+  .blob.b3{width:38vw;height:38vw;background:var(--cyan);bottom:-14vw;left:30vw;opacity:.32;animation:drift3 30s var(--ease) infinite alternate}
+  @keyframes drift1{to{transform:translate(8vw,6vw) scale(1.15)}}
+  @keyframes drift2{to{transform:translate(-6vw,10vw) scale(1.1)}}
+  @keyframes drift3{to{transform:translate(6vw,-8vw) scale(1.2)}}
+
+  .grain{
+    position:fixed;inset:0;z-index:1;pointer-events:none;opacity:.4;
+    background-image:radial-gradient(rgba(255,255,255,.25) .5px,transparent .5px);
+    background-size:3px 3px;
+    mix-blend-mode:overlay;
+  }
+
+  .wrap{position:relative;z-index:2;max-width:var(--maxw);margin:0 auto;padding:0 24px}
+
+  /* ---------- Nav ---------- */
+  header{position:sticky;top:0;z-index:30}
+  .nav{
+    display:flex;align-items:center;justify-content:space-between;
+    max-width:var(--maxw);margin:0 auto;padding:18px 24px;
+  }
+  .brand{display:flex;align-items:center;gap:11px;font-family:"Space Grotesk",sans-serif;font-weight:700;font-size:19px;letter-spacing:-.01em;color:var(--ink);text-decoration:none}
+  .mark{
+    width:30px;height:30px;border-radius:9px;flex:none;
+    background:linear-gradient(135deg,var(--coral),var(--violet));
+    display:grid;place-items:center;font-family:"Space Grotesk",sans-serif;font-weight:700;font-size:16px;color:#fff;
+    box-shadow:0 6px 20px rgba(177,74,237,.35);
+  }
+  .nav-links{display:flex;align-items:center;gap:30px}
+  .nav-links a{color:var(--muted);text-decoration:none;font-size:14.5px;font-weight:500;transition:color .25s}
+  .nav-links a:hover{color:var(--ink)}
+  .nav-cta{
+    padding:9px 18px;border-radius:999px;font-size:14px;font-weight:600;
+    background:var(--ink);color:var(--night)!important;
+    transition:transform .25s var(--ease),box-shadow .25s;
+  }
+  .nav-cta:hover{transform:translateY(-1px);box-shadow:0 8px 24px rgba(245,243,255,.18)}
+  .nav-toggle{display:none}
+
+  /* ---------- Hero ---------- */
+  .hero{position:relative;padding:70px 0 96px;text-align:center}
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:9px;
+    font-family:"Space Mono",monospace;font-size:12.5px;letter-spacing:.12em;text-transform:uppercase;
+    color:var(--muted);padding:7px 15px;border:1px solid var(--line);border-radius:999px;background:var(--glass);
+    margin-bottom:30px;
+  }
+  .eyebrow .dot{width:7px;height:7px;border-radius:50%;background:var(--cyan);box-shadow:0 0 12px var(--cyan)}
+
+  h1{
+    font-family:"Space Grotesk",sans-serif;font-weight:700;
+    font-size:clamp(38px,6.2vw,76px);line-height:1.02;letter-spacing:-.025em;
+    max-width:16ch;margin:0 auto 24px;
+  }
+  h1 .grad{
+    background:linear-gradient(110deg,var(--coral),var(--violet) 55%,var(--cyan));
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+  }
+  .lede{font-size:clamp(16px,2vw,20px);color:var(--muted);max-width:54ch;margin:0 auto 38px}
+
+  .cta-row{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+  .btn{
+    display:inline-flex;align-items:center;gap:9px;
+    padding:14px 26px;border-radius:999px;font-weight:600;font-size:15px;text-decoration:none;
+    transition:transform .25s var(--ease),box-shadow .3s,background .3s;cursor:pointer;border:none;
+  }
+  .btn-primary{background:linear-gradient(135deg,var(--coral),var(--violet));color:#fff;box-shadow:0 10px 30px rgba(177,74,237,.35)}
+  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 16px 40px rgba(177,74,237,.5)}
+  .btn-ghost{background:var(--glass);color:var(--ink);border:1px solid var(--line)}
+  .btn-ghost:hover{background:var(--glass-2);transform:translateY(-2px)}
+
+  /* ---------- Floating tiles ---------- */
+  .tiles{position:absolute;inset:0;z-index:-1;pointer-events:none}
+  .tile{
+    position:absolute;width:64px;height:64px;border-radius:18px;
+    background:var(--glass-2);border:1px solid var(--line);
+    backdrop-filter:blur(8px);display:grid;place-items:center;
+    box-shadow:0 10px 30px rgba(0,0,0,.3);
+    will-change:transform;
+  }
+  .tile svg{width:30px;height:30px}
+  .tile.t1{top:14%;left:8%;animation:float 7s var(--ease) infinite alternate}
+  .tile.t2{top:24%;right:9%;animation:float 8.5s var(--ease) infinite alternate-reverse}
+  .tile.t3{top:58%;left:13%;animation:float 9s var(--ease) infinite alternate-reverse}
+  .tile.t4{top:64%;right:12%;animation:float 7.8s var(--ease) infinite alternate}
+  .tile.t5{top:40%;left:3%;animation:float 10s var(--ease) infinite alternate}
+  .tile.t6{top:46%;right:3%;animation:float 8s var(--ease) infinite alternate-reverse}
+  @keyframes float{to{transform:translateY(-22px)}}
+
+  /* ---------- Section scaffolding ---------- */
+  section{position:relative;padding:84px 0}
+  .sec-label{
+    font-family:"Space Mono",monospace;font-size:12.5px;letter-spacing:.12em;text-transform:uppercase;
+    color:var(--cyan);margin-bottom:16px;
+  }
+  .sec-title{font-family:"Space Grotesk",sans-serif;font-weight:700;font-size:clamp(28px,4vw,44px);letter-spacing:-.02em;line-height:1.1;max-width:20ch;margin-bottom:18px}
+  .sec-intro{color:var(--muted);font-size:17px;max-width:58ch}
+
+  /* ---------- What we do ---------- */
+  .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:48px}
+  .card{
+    position:relative;padding:32px 28px;border-radius:22px;
+    background:var(--glass);border:1px solid var(--line-soft);
+    transition:transform .35s var(--ease),border-color .35s,background .35s;
+    overflow:hidden;
+  }
+  .card::before{
+    content:"";position:absolute;inset:0;opacity:0;transition:opacity .35s;
+    background:radial-gradient(120% 80% at 50% 0%,rgba(177,74,237,.18),transparent 70%);
+  }
+  .card:hover{transform:translateY(-6px);border-color:var(--line);background:var(--glass-2)}
+  .card:hover::before{opacity:1}
+  .card .ic{
+    width:52px;height:52px;border-radius:14px;display:grid;place-items:center;margin-bottom:22px;
+    background:linear-gradient(135deg,rgba(255,122,89,.2),rgba(177,74,237,.2));border:1px solid var(--line);
+  }
+  .card .ic svg{width:26px;height:26px}
+  .card h3{font-family:"Space Grotesk",sans-serif;font-size:20px;font-weight:600;margin-bottom:10px;letter-spacing:-.01em}
+  .card p{color:var(--muted);font-size:15px}
+
+  /* ---------- About ---------- */
+  .about-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:56px;align-items:center}
+  .about-copy p{color:var(--muted);font-size:17px;margin-bottom:18px}
+  .about-copy strong{color:var(--ink);font-weight:600}
+  .facts{display:grid;gap:14px}
+  .fact{
+    display:flex;align-items:center;gap:16px;padding:18px 20px;border-radius:16px;
+    background:var(--glass);border:1px solid var(--line-soft);
+  }
+  .fact .fic{width:40px;height:40px;border-radius:11px;flex:none;display:grid;place-items:center;background:var(--glass-2);border:1px solid var(--line)}
+  .fact .fic svg{width:20px;height:20px}
+  .fact b{font-family:"Space Grotesk",sans-serif;display:block;font-size:15.5px;font-weight:600}
+  .fact span{color:var(--muted);font-size:13.5px}
+
+  /* ---------- Platforms ---------- */
+  .platforms{text-align:center}
+  .plat-row{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-top:36px}
+  .plat{
+    display:flex;align-items:center;gap:14px;padding:18px 28px;border-radius:16px;
+    background:var(--glass);border:1px solid var(--line-soft);min-width:230px;text-align:left;
+    transition:transform .3s var(--ease),border-color .3s;
+  }
+  .plat:hover{transform:translateY(-4px);border-color:var(--line)}
+  .plat svg{width:30px;height:30px;flex:none}
+  .plat .pt{font-size:12px;color:var(--muted)}
+  .plat .pn{font-family:"Space Grotesk",sans-serif;font-size:17px;font-weight:600}
+
+  /* ---------- Contact ---------- */
+  .contact-card{
+    position:relative;text-align:center;padding:64px 40px;border-radius:28px;overflow:hidden;
+    background:linear-gradient(135deg,rgba(255,122,89,.12),rgba(177,74,237,.12));
+    border:1px solid var(--line);
+  }
+  .contact-card h2{font-family:"Space Grotesk",sans-serif;font-size:clamp(28px,4vw,42px);font-weight:700;letter-spacing:-.02em;margin-bottom:16px}
+  .contact-card p{color:var(--muted);font-size:17px;max-width:48ch;margin:0 auto 32px}
+  .email-pill{
+    display:inline-flex;align-items:center;gap:12px;padding:15px 26px;border-radius:999px;
+    background:var(--ink);color:var(--night);text-decoration:none;font-weight:600;font-size:16px;
+    transition:transform .25s var(--ease),box-shadow .3s;
+  }
+  .email-pill:hover{transform:translateY(-2px);box-shadow:0 14px 36px rgba(245,243,255,.22)}
+  .email-pill svg{width:19px;height:19px}
+
+  /* ---------- Footer ---------- */
+  footer{border-top:1px solid var(--line-soft);padding:40px 0;margin-top:30px}
+  .foot{display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap}
+  .foot .brand{font-size:17px}
+  .foot p{color:var(--muted);font-size:13.5px}
+  .foot a{color:var(--muted);text-decoration:none;transition:color .25s}
+  .foot a:hover{color:var(--ink)}
+
+  /* ---------- Reveal animation ---------- */
+  .reveal{opacity:0;transform:translateY(28px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
+  .reveal.in{opacity:1;transform:none}
+
+  /* ---------- Focus ---------- */
+  a:focus-visible,.btn:focus-visible,.email-pill:focus-visible{outline:2px solid var(--cyan);outline-offset:3px;border-radius:6px}
+
+  /* ---------- Responsive ---------- */
+  @media(max-width:880px){
+    .cards{grid-template-columns:1fr;gap:14px}
+    .about-grid{grid-template-columns:1fr;gap:36px}
+    .nav-links{
+      position:fixed;inset:0 0 0 auto;width:min(78vw,320px);
+      flex-direction:column;align-items:flex-start;justify-content:center;gap:26px;padding:40px;
+      background:rgba(11,10,31,.96);backdrop-filter:blur(16px);border-left:1px solid var(--line);
+      transform:translateX(100%);transition:transform .4s var(--ease);
+    }
+    .nav-links.open{transform:none}
+    .nav-links a{font-size:18px}
+    .nav-toggle{
+      display:grid;place-items:center;width:42px;height:42px;border-radius:11px;z-index:40;
+      background:var(--glass);border:1px solid var(--line);cursor:pointer;
+    }
+    .nav-toggle span{display:block;width:18px;height:2px;background:var(--ink);position:relative}
+    .nav-toggle span::before,.nav-toggle span::after{content:"";position:absolute;left:0;width:18px;height:2px;background:var(--ink);transition:.3s}
+    .nav-toggle span::before{top:-6px}.nav-toggle span::after{top:6px}
+    .nav-toggle.open span{background:transparent}
+    .nav-toggle.open span::before{top:0;transform:rotate(45deg)}
+    .nav-toggle.open span::after{top:0;transform:rotate(-45deg)}
+    .tile{width:52px;height:52px}
+    .tile.t5,.tile.t6{display:none}
+    section{padding:64px 0}
+  }
+  @media(max-width:520px){
+    .tile.t1,.tile.t2{opacity:.6}
+    .contact-card{padding:48px 24px}
+  }
+
+  @media(prefers-reduced-motion:reduce){
+    *{animation:none!important;transition:none!important}
+    html{scroll-behavior:auto}
+    .reveal{opacity:1;transform:none}
+  }
+</style>
+</head>
+<body>
+
+<div class="aurora">
+  <div class="blob b1"></div>
+  <div class="blob b2"></div>
+  <div class="blob b3"></div>
+</div>
+<div class="grain"></div>
+
+<header>
+  <nav class="nav">
+    <a href="#top" class="brand"><span class="mark">S</span>SenoTech</a>
+    <div class="nav-links" id="navLinks">
+      <a href="#work">What we do</a>
+      <a href="#about">About</a>
+      <a href="#platforms">Platforms</a>
+      <a href="#contact" class="nav-cta">Contact us</a>
+    </div>
+    <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false"><span></span></button>
+  </nav>
+</header>
+
+<main id="top" class="wrap">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="tiles" aria-hidden="true">
+      <div class="tile t1" data-depth="20"><svg viewBox="0 0 24 24" fill="none" stroke="#FF7A59" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg></div>
+      <div class="tile t2" data-depth="34"><svg viewBox="0 0 24 24" fill="none" stroke="#B14AED" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="6" y1="12" x2="10" y2="12"/><line x1="8" y1="10" x2="8" y2="14"/><line x1="15" y1="11" x2="15.01" y2="11"/><line x1="18" y1="13" x2="18.01" y2="13"/><rect x="2" y="6" width="20" height="12" rx="6"/></svg></div>
+      <div class="tile t3" data-depth="26"><svg viewBox="0 0 24 24" fill="none" stroke="#36E2C4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19V5"/><path d="M4 19h16"/><path d="M8 16v-5"/><path d="M13 16V8"/><path d="M18 16v-9"/></svg></div>
+      <div class="tile t4" data-depth="40"><svg viewBox="0 0 24 24" fill="none" stroke="#FF7A59" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
+      <div class="tile t5" data-depth="18"><svg viewBox="0 0 24 24" fill="none" stroke="#B14AED" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg></div>
+      <div class="tile t6" data-depth="30"><svg viewBox="0 0 24 24" fill="none" stroke="#36E2C4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg></div>
+    </div>
+
+    <span class="eyebrow reveal"><span class="dot"></span>SenoTech LLC · United Arab Emirates</span>
+    <h1 class="reveal">We build apps &amp; games <span class="grad">worth keeping on your home screen.</span></h1>
+    <p class="lede reveal">SenoTech is a UAE-based studio that designs, develops, and publishes original mobile experiences — from everyday apps to games made to be played again and again.</p>
+    <div class="cta-row reveal">
+      <a href="#work" class="btn btn-primary">See what we make
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </a>
+      <a href="#contact" class="btn btn-ghost">Get in touch</a>
+    </div>
+  </section>
+
+  <!-- WHAT WE DO -->
+  <section id="work">
+    <p class="sec-label reveal">What we do</p>
+    <h2 class="sec-title reveal">From a first idea to a finished product on every screen.</h2>
+    <p class="sec-intro reveal">We handle the whole journey — design, engineering, and release — so each product lands polished and ready on the platforms people already use.</p>
+
+    <div class="cards">
+      <div class="card reveal">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#FF7A59" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="3"/><line x1="12" y1="18" x2="12" y2="18"/></svg></div>
+        <h3>Mobile apps</h3>
+        <p>Useful, carefully crafted apps for iOS and Android — fast, intuitive, and built to feel right in your hand.</p>
+      </div>
+      <div class="card reveal">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#B14AED" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="6" y1="11" x2="10" y2="11"/><line x1="8" y1="9" x2="8" y2="13"/><line x1="15" y1="12" x2="15.01" y2="12"/><line x1="18" y1="10" x2="18.01" y2="10"/><rect x="2" y="6" width="20" height="12" rx="5"/></svg></div>
+        <h3>Games</h3>
+        <p>Playful, polished games designed to be picked up in a spare minute and remembered long after.</p>
+      </div>
+      <div class="card reveal">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#36E2C4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v13"/><polyline points="7 9 12 14 17 9"/><path d="M5 21h14"/></svg></div>
+        <h3>Publishing</h3>
+        <p>We take products end to end — from concept to a live listing on the App Store and Google Play.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="about-grid">
+      <div class="about-copy">
+        <p class="sec-label reveal">About SenoTech</p>
+        <h2 class="sec-title reveal">A small studio with a global home screen.</h2>
+        <p class="reveal"><strong>SenoTech LLC</strong> is a technology company registered in the United Arab Emirates. We create original software and bring it to people everywhere through the major mobile platforms.</p>
+        <p class="reveal">We care about the details others skip — the loading moment, the empty screen, the way a tap should feel. That focus is what turns a download into something people actually keep.</p>
+      </div>
+      <div class="facts">
+        <div class="fact reveal">
+          <div class="fic"><svg viewBox="0 0 24 24" fill="none" stroke="#36E2C4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+          <div><b>Based in the UAE</b><span>Registered company, building for a global audience</span></div>
+        </div>
+        <div class="fact reveal">
+          <div class="fic"><svg viewBox="0 0 24 24" fill="none" stroke="#FF7A59" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="3"/><line x1="12" y1="18" x2="12" y2="18"/></svg></div>
+          <div><b>Apps &amp; games</b><span>Two crafts, one standard of polish</span></div>
+        </div>
+        <div class="fact reveal">
+          <div class="fic"><svg viewBox="0 0 24 24" fill="none" stroke="#B14AED" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div>
+          <div><b>iOS &amp; Android</b><span>Published on the App Store and Google Play</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PLATFORMS -->
+  <section id="platforms" class="platforms">
+    <p class="sec-label reveal">Where to find us</p>
+    <h2 class="sec-title reveal" style="margin-left:auto;margin-right:auto;text-align:center">Available across both major app stores.</h2>
+    <div class="plat-row">
+      <div class="plat reveal">
+        <svg viewBox="0 0 24 24" fill="#F5F3FF"><path d="M16.5 3c.1 1-.3 2-1 2.8-.7.8-1.7 1.4-2.7 1.3-.1-1 .4-2 1-2.7C14.6 3.6 15.6 3 16.5 3zM19 17.2c-.5 1.1-.8 1.6-1.4 2.6-.9 1.4-2.1 3.1-3.6 3.1-1.3 0-1.7-.8-3.5-.8s-2.2.8-3.5.8c-1.5 0-2.6-1.5-3.5-2.9C1 17.4.8 13 2.4 10.6c1-1.6 2.7-2.6 4.3-2.6 1.6 0 2.6.9 3.9.9 1.3 0 2-.9 3.9-.9 1.4 0 2.9.8 3.9 2.1-3.4 1.9-2.9 6.8.7 7.1z"/></svg>
+        <div><div class="pt">Download on the</div><div class="pn">App Store</div></div>
+      </div>
+      <div class="plat reveal">
+        <svg viewBox="0 0 24 24"><path fill="#36E2C4" d="M3.6 2.3 13 11.7l-9.4 9.4c-.3-.2-.5-.6-.5-1.1V3.4c0-.5.2-.9.5-1.1z"/><path fill="#FF7A59" d="m16.8 8.5 2.9 1.6c1 .6 1 2 0 2.6l-2.9 1.6-3-3 3-2.8z"/><path fill="#B14AED" d="M13 11.7 3.6 2.3c.4-.2.9-.2 1.4.1l11 6.1-3 3.2z"/><path fill="#F5F3FF" d="m13 11.7 3 3.2-11 6.1c-.5.3-1 .3-1.4.1l9.4-9.4z"/></svg>
+        <div><div class="pt">Get it on</div><div class="pn">Google Play</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="contact-card reveal">
+      <h2>Let's build something worth keeping.</h2>
+      <p>Have a question, an idea, or want to work with us? Our team reads every message.</p>
+      <a href="mailto:support@senotechapps.com" class="email-pill">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="3"/><path d="m3 7 9 6 9-6"/></svg>
+        support@senotechapps.com
+      </a>
+    </div>
+  </section>
+
+</main>
+
+<footer class="wrap">
+  <div class="foot">
+    <a href="#top" class="brand"><span class="mark">S</span>SenoTech</a>
+    <p>© <span id="year"></span> SenoTech LLC · Registered in the United Arab Emirates</p>
+    <a href="mailto:support@senotechapps.com">support@senotechapps.com</a>
+  </div>
+</footer>
+
+<script>
+  // Year
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // Mobile nav
+  const toggle = document.getElementById('navToggle');
+  const links = document.getElementById('navLinks');
+  toggle.addEventListener('click', () => {
+    const open = links.classList.toggle('open');
+    toggle.classList.toggle('open', open);
+    toggle.setAttribute('aria-expanded', open);
+    toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+  });
+  links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    links.classList.remove('open'); toggle.classList.remove('open');
+    toggle.setAttribute('aria-expanded', false);
+  }));
+
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // Scroll reveal
+  if (!reduce && 'IntersectionObserver' in window) {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e, i) => {
+        if (e.isIntersecting) {
+          setTimeout(() => e.target.classList.add('in'), (i % 4) * 80);
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+  } else {
+    document.querySelectorAll('.reveal').forEach(el => el.classList.add('in'));
+  }
+
+  // Hero tile parallax (pointer only, motion allowed)
+  const fine = window.matchMedia('(pointer: fine)').matches;
+  if (!reduce && fine) {
+    const tiles = [...document.querySelectorAll('.tile')];
+    window.addEventListener('mousemove', (ev) => {
+      const x = (ev.clientX / window.innerWidth - 0.5);
+      const y = (ev.clientY / window.innerHeight - 0.5);
+      tiles.forEach(t => {
+        const d = parseFloat(t.dataset.depth || 20);
+        t.style.transform = `translate(${x * d}px, ${y * d}px)`;
+      });
+    }, { passive: true });
+  }
+</script>
+</body>
+</html>
